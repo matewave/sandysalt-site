@@ -74,8 +74,23 @@
   .hero { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px; }
   .tile { position: relative; overflow: hidden; background: var(--tile); display: block; }
   .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-  .hero .tile:hover img { transform: scale(1.03); }
   .hero .tile { aspect-ratio: 913 / 1280; }
+  /* движение в духе промо-ролика: медленный наезд + рисованная обводка по силуэту */
+  .defs { position: absolute; width: 0; height: 0; overflow: hidden; }
+  .kb { position: absolute; inset: 0; transform-origin: 58% 72%; animation: kb 18s ease-in-out infinite alternate; will-change: transform; }
+  .hero .tile:nth-child(2) { --d: 2.5s; }
+  .hero .tile:nth-child(2) .kb { transform-origin: 52% 70%; animation-delay: -9s; }
+  .kb img, .kb svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .tint { mix-blend-mode: color; }
+  .fill { opacity: 0; animation: tint 10s var(--d, 0s) infinite; }
+  .ln { fill: none; stroke-width: 6; stroke-linecap: round; stroke-linejoin: round; stroke-dasharray: 1 1; stroke-dashoffset: 1; animation: draw 10s var(--d, 0s) infinite; }
+  .ln.thin { stroke: #fff; stroke-width: 2.5; animation-delay: calc(var(--d, 0s) + .25s); }
+  .ln.wave { stroke-width: 5; animation-delay: calc(var(--d, 0s) + .9s); }
+  .spark { fill: none; stroke-width: 4; stroke-linecap: round; transform-box: fill-box; transform-origin: center; transform: scale(0); animation: spark 10s var(--d, 0s) infinite; }
+  @keyframes kb { from { transform: scale(1); } to { transform: scale(1.14) translate(-1.5%, -2%); } }
+  @keyframes draw { 0% { stroke-dashoffset: 1; } 18%, 80% { stroke-dashoffset: 0; } 94%, 100% { stroke-dashoffset: -1; } }
+  @keyframes spark { 0%, 16% { transform: scale(0) rotate(-40deg); } 21% { transform: scale(1.25) rotate(10deg); } 25%, 78% { transform: scale(1) rotate(0); } 84%, 100% { transform: scale(0) rotate(30deg); } }
+  @keyframes tint { 0%, 26% { opacity: 0; } 32%, 72% { opacity: .7; } 80%, 100% { opacity: 0; } }
   .tile-cap { position: absolute; right: 24px; bottom: 22px; left: 24px; text-align: right; color: #fff; text-shadow: 0 1px 18px rgba(0,0,0,.35); }
   .tile-cap .big { font-family: var(--cond); font-weight: 700; font-size: clamp(30px, 3.6vw, 52px); line-height: 1; letter-spacing: -.01em; }
   .tile-cap .ui { display: inline-block; margin-top: 10px; }
@@ -169,7 +184,8 @@
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
     .reveal { opacity: 1; transform: none; transition: none; }
-    .ticker-track { animation: none; }
+    .ticker-track, .kb { animation: none; }
+    .doodle, .tint { display: none; }
   }
 
   @media (max-width: 900px) {
@@ -226,14 +242,49 @@
 <main id="top">
   <h1 style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Sandy Salt — футболки с авторскими серф-принтами из Велигамы</h1>
 
+  <!-- силуэты серферов и досок в координатах фото 913×1280; по ним рисуется анимированная обводка -->
+  <svg class="defs" aria-hidden="true"><defs>
+    <filter id="boil"><feTurbulence type="fractalNoise" baseFrequency=".035" numOctaves="2" seed="1"><animate attributeName="seed" values="1;4;7;10;13" dur=".6s" calcMode="discrete" repeatCount="indefinite"/></feTurbulence><feDisplacementMap in="SourceGraphic" scale="7"/></filter>
+    <path id="board1" pathLength="1" d="M407,527 C430,532 448,560 456,620 C462,700 460,800 452,880 C444,960 428,1040 400,1082 L372,1082 C356,1020 347,940 347,860 C347,760 350,660 360,590 C370,545 388,527 407,527Z"/>
+    <path id="person1" pathLength="1" d="M530,677 C545,676 556,684 555,700 C555,715 552,726 556,733 C575,738 592,742 598,752 C604,780 603,830 601,880 C600,895 594,905 590,902 L600,950 C598,960 593,965 590,970 C590,1010 591,1050 593,1085 C585,1092 568,1092 558,1088 C552,1060 548,1010 546,975 L540,975 C534,1010 528,1050 526,1085 C518,1092 505,1092 495,1088 C505,1060 515,1010 515,970 C510,965 506,958 507,948 C509,910 511,880 512,860 C510,840 507,815 505,805 C500,808 494,807 490,800 C483,785 472,765 465,752 C463,746 468,743 472,744 C490,742 505,740 517,735 C523,733 524,728 522,722 C514,716 508,705 510,693 C513,682 520,677 530,677Z"/>
+    <path id="board2" pathLength="1" d="M395,590 C418,592 434,615 440,650 C448,710 449,800 444,880 C439,960 425,1030 400,1057 L380,1057 C360,1020 347,960 346,880 C345,790 348,700 357,650 C364,612 378,590 395,590Z"/>
+    <path id="person2" pathLength="1" d="M482,722 C495,720 505,728 507,738 C503,748 496,752 492,760 C490,768 488,772 486,776 C500,778 520,778 530,782 C540,800 542,850 542,885 C541,905 538,918 534,925 L540,955 C543,975 545,995 546,1012 C550,1030 556,1045 560,1055 L545,1056 C538,1030 532,995 529,968 C520,962 512,958 505,955 C495,960 482,968 476,980 C473,1005 472,1030 470,1048 L447,1050 C452,1030 456,1005 457,990 C455,970 452,960 450,950 L447,775 C455,770 460,765 462,752 C463,738 470,724 482,722Z"/>
+  </defs></svg>
+
   <div class="hero">
     <a class="tile" href="#drop">
-      <img src="img/shore-1.jpg" width="913" height="1280" alt="Серфер с лонгбордом на пляже Велигамы, сверху логотип Sandy Salt">
+      <div class="kb">
+        <img src="img/shore-1.jpg" width="913" height="1280" alt="Серфер с лонгбордом на пляже Велигамы, сверху логотип Sandy Salt">
+        <svg class="tint" viewBox="0 0 913 1280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#person1" class="fill" style="fill:#ffa100"/></svg>
+        <svg class="doodle" viewBox="0 0 913 1280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g filter="url(#boil)">
+          <use href="#board1" class="ln" style="stroke:#adf3ff"/>
+          <use href="#board1" class="ln thin" transform="translate(5 -4)"/>
+          <use href="#person1" class="ln" style="stroke:#ffa100"/>
+          <use href="#person1" class="ln thin" transform="translate(-4 3)"/>
+          <path class="ln wave" style="stroke:#adf3ff" pathLength="1" d="M458,1106c15,-14 30,-14 45,0s30,14 45,0s30,-14 45,0s30,14 45,0"/>
+          <path class="spark" style="stroke:#fff" pathLength="1" d="M592,640L592,684M570,662L614,662M579,649L605,675M579,675L605,649"/>
+          <path class="spark" style="stroke:#fff" pathLength="1" d="M474,676L474,704M460,690L488,690M466,682L482,698M466,698L482,682"/>
+          <path class="spark" style="stroke:#fff" pathLength="1" d="M562,616L562,640M550,628L574,628M555,621L569,635M555,635L569,621"/>
+        </g></svg>
+      </div>
       <span class="coords ui up">5.97° N · 80.42° E — Weligama, Sri Lanka</span>
       <span class="tile-cap"><span class="big">Дроп 01. Weligama Bay</span><br><span class="ui arrow">Смотреть принты</span></span>
     </a>
     <a class="tile" href="#club" data-tg>
-      <img src="img/shore-2.jpg" width="913" height="1280" alt="Серфер в панаме с доской у кромки воды, логотип Sandy Salt">
+      <div class="kb">
+        <img src="img/shore-2.jpg" width="913" height="1280" alt="Серфер в панаме с доской у кромки воды, логотип Sandy Salt">
+        <svg class="tint" viewBox="0 0 913 1280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><use href="#person2" class="fill" style="fill:#3cbad2"/></svg>
+        <svg class="doodle" viewBox="0 0 913 1280" preserveAspectRatio="xMidYMid slice" aria-hidden="true"><g filter="url(#boil)">
+          <use href="#board2" class="ln" style="stroke:#ffa100"/>
+          <use href="#board2" class="ln thin" transform="translate(5 -4)"/>
+          <use href="#person2" class="ln" style="stroke:#3cbad2"/>
+          <use href="#person2" class="ln thin" transform="translate(-4 3)"/>
+          <path class="ln wave" style="stroke:#ffa100" pathLength="1" d="M432,1078c15,-14 30,-14 45,0s30,14 45,0s30,-14 45,0s30,14 45,0"/>
+          <path class="spark" style="stroke:#ffa100" pathLength="1" d="M534,686L534,726M514,706L554,706M522,694L546,718M522,718L546,694"/>
+          <path class="spark" style="stroke:#ffa100" pathLength="1" d="M438,699L438,725M425,712L451,712M430,704L446,720M430,720L446,704"/>
+          <path class="spark" style="stroke:#ffa100" pathLength="1" d="M514,661L514,683M503,672L525,672M507,665L521,679M507,679L521,665"/>
+        </g></svg>
+      </div>
       <span class="tile-cap"><span class="big">Только для своих</span><br><span class="ui arrow">Вступить в клуб</span></span>
     </a>
   </div>
