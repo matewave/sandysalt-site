@@ -15,7 +15,7 @@
 <meta property="og:image" content="https://sandysalt.ru/img/logo.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,400&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@500;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
   :root {
     /* цвета из логотипа: оранжевые буквы + голубая доска */
@@ -59,9 +59,9 @@
   a { color: inherit; }
   img, svg { display: block; max-width: 100%; }
   .wrap { max-width: var(--wrap); margin: 0 auto; padding: 0 20px; }
-  h1, h2, h3 { font-family: "Fraunces", Georgia, serif; font-weight: 600; letter-spacing: -.01em; line-height: 1.08; }
-  h2 { font-size: clamp(32px, 5vw, 52px); margin-bottom: 20px; }
-  h3 { font-size: 24px; }
+  h1, h2, h3 { font-family: "Unbounded", system-ui, sans-serif; font-weight: 700; letter-spacing: -.02em; line-height: 1.1; }
+  h2 { font-size: clamp(26px, 4.2vw, 44px); margin-bottom: 20px; }
+  h3 { font-size: 19px; }
   .eyebrow {
     display: inline-block; font-size: 13px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase;
     color: var(--purple-deep); margin-bottom: 14px;
@@ -104,12 +104,12 @@
     background: var(--sky-soft);
   }
   .word .si { font-size: 15px; color: var(--ink-soft); margin-bottom: 6px; }
-  .word .big { font-family: "Fraunces", serif; font-size: clamp(40px, 6vw, 60px); line-height: 1; }
+  .word .big { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: clamp(32px, 5vw, 50px); line-height: 1; }
   .word .parts { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 22px 0; }
   .word .part { background: var(--salt); border-radius: 12px; padding: 14px; }
-  .word .part b { font-family: "Fraunces", serif; font-size: 22px; display: block; }
+  .word .part b { font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 18px; display: block; }
   .word .part span { font-size: 14px; color: var(--ink-soft); }
-  .word .eq { font-family: "Fraunces", serif; font-style: italic; font-size: 24px; color: var(--ocean); }
+  .word .eq { font-family: "Unbounded", sans-serif; font-weight: 500; font-size: 20px; color: var(--ocean); }
 
   /* drop */
   .drop-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; flex-wrap: wrap; margin-bottom: 40px; }
@@ -134,7 +134,7 @@
   .how .lead { color: rgba(255,250,241,.75); }
   .steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; margin-top: 48px; counter-reset: s; }
   .step { border-top: 1.5px solid rgba(255,250,241,.35); padding-top: 20px; }
-  .step::before { counter-increment: s; content: "0" counter(s); font-family: "Fraunces", serif; font-size: 40px; display: block; color: var(--orange); margin-bottom: 8px; }
+  .step::before { counter-increment: s; content: "0" counter(s); font-family: "Unbounded", sans-serif; font-weight: 700; font-size: 34px; display: block; color: var(--orange); margin-bottom: 8px; }
   .step p { color: rgba(255,250,241,.75); font-size: 15px; margin-top: 6px; }
 
   /* quality */
@@ -152,7 +152,7 @@
   .faq { max-width: 760px; }
   details { border-bottom: 1px solid var(--line); padding: 20px 0; }
   summary { cursor: pointer; font-weight: 700; font-size: 18px; list-style: none; display: flex; justify-content: space-between; gap: 16px; }
-  summary::after { content: "+"; font-family: "Fraunces", serif; font-size: 26px; line-height: 1; transition: transform .2s; }
+  summary::after { content: "+"; font-family: "Unbounded", sans-serif; font-weight: 500; font-size: 24px; line-height: 1; transition: transform .2s; }
   details[open] summary::after { transform: rotate(45deg); }
   details p { color: var(--ink-soft); margin-top: 10px; }
 
