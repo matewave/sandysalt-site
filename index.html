@@ -180,6 +180,25 @@
   .foot-bottom img { height: 70px; width: auto; }
   .foot-bottom span { font-family: var(--cond); font-size: 14px; color: var(--ink-soft); text-transform: uppercase; letter-spacing: .06em; }
 
+  .who { display: block; font-family: var(--cond); font-weight: 600; font-size: 15px; font-style: normal; text-transform: uppercase; letter-spacing: .08em; }
+  .quote { margin: 0; padding: 0 var(--gutter) 64px; text-align: center; }
+  .quote p { font-family: "Unbounded"; font-weight: 500; font-size: clamp(20px, 3vw, 40px); line-height: 1.25; letter-spacing: -.02em; max-width: 1040px; margin: 0 auto 18px; }
+  .quote p em { font-style: normal; color: var(--tangerine); }
+  .quote .who { color: var(--ink-soft); }
+  .manifest { background: var(--ink); color: #fff; margin: 6px 6px 0; padding: clamp(28px, 5vw, 64px); }
+  .manifest .label { color: var(--orange); margin-bottom: 18px; }
+  .manifest ul { list-style: none; margin: 0 0 22px; padding: 0; }
+  .manifest li { font-family: var(--cond); font-weight: 600; font-size: clamp(24px, 4vw, 54px); line-height: 1.08; text-transform: uppercase; padding: 12px 0; border-top: 1px solid rgba(255,255,255,.18); }
+  .manifest li b { font-weight: 700; color: var(--orange); }
+  .manifest li:last-child b { color: var(--sky); }
+  .manifest .who { color: rgba(255,255,255,.65); }
+  .duo { display: grid; grid-template-columns: 1fr 1fr; gap: 6px; padding: 6px 6px 0; }
+  .duo blockquote { margin: 0; padding: clamp(28px, 5vw, 64px); display: flex; flex-direction: column; justify-content: space-between; gap: 28px; }
+  .duo p { font-family: "Unbounded"; font-weight: 500; font-size: clamp(19px, 2.4vw, 32px); line-height: 1.25; letter-spacing: -.02em; margin: 0; }
+  .duo .a { background: var(--teal); }
+  .duo .b { background: var(--purple); color: #fff; }
+  .club-quote { margin: 40px auto 0; max-width: 620px; }
+  .club-quote p { font-family: var(--cond); font-weight: 600; font-size: clamp(22px, 2.6vw, 30px); line-height: 1.15; text-transform: uppercase; margin: 0 auto 8px; }
   .reveal { opacity: 0; transform: translateY(16px); transition: opacity .7s ease, transform .7s ease; }
   .reveal.in { opacity: 1; transform: none; }
   @media (prefers-reduced-motion: reduce) {
@@ -197,7 +216,7 @@
     .steps { grid-template-columns: 1fr 1fr; }
     .step:nth-child(3) { padding-left: 0; border-left: 0; }
     .step:nth-child(n+3) { border-top: 1px solid var(--line); }
-    .quality, .story-grid { grid-template-columns: 1fr; }
+    .quality, .story-grid, .duo { grid-template-columns: 1fr; }
     .foot { grid-template-columns: 1fr 1fr; }
   }
   @media (max-width: 560px) {
@@ -328,6 +347,11 @@
     <p class="wrap note">Сейчас на месте принтов эскизы-заглушки. Настоящие работы художника покажем в&nbsp;клубе первыми.</p>
   </section>
 
+  <blockquote class="quote reveal">
+    <p>Серфинг никогда не повторяется. Ты уже не вернёшься в этот момент. Но его можно запечатлеть. На фото, в памяти <em>или на этой футболке.</em></p>
+    <cite class="who">Антон</cite>
+  </blockquote>
+
   <div class="banner">
     <div class="tile reveal">
       <img src="img/patch.jpg?v=2" width="1280" height="853" loading="lazy" alt="Нашивка Sandy Salt: логотип с доской и надпись If you're one of us who just love it, no matter what level you are, where you are, waves are always in your soul and on this shirt">
@@ -351,6 +375,29 @@
         </div>
         <div class="eq">= песчаная деревня. Отсюда наше Sandy.</div>
       </div>
+    </div>
+    <div class="manifest reveal">
+      <span class="label">Что для нас серфинг</span>
+      <ul>
+        <li>Сидеть на берегу и смотреть на волны в тишине — <b>серфинг</b></li>
+        <li>Сидеть на лайнапе, щурясь от закатного солнца — <b>серфинг</b></li>
+        <li>Встретиться на юге Шри-Ланки с другом из другого города — <b>серфинг</b></li>
+        <li>Смотреть австралийские фильмы на DVD — тоже <b>серфинг</b></li>
+        <li>Скупить целый раздел книжного — <b>серфинг</b></li>
+        <li>Обкатать все московские пулы — <b>серфинг</b></li>
+        <li>Любить весь этот мир в его солёном проявлении прибоя — <b>серфинг</b></li>
+      </ul>
+      <cite class="who">Слава</cite>
+    </div>
+    <div class="duo">
+      <blockquote class="a reveal">
+        <p>Могу ли я назвать себя профессиональным серфером — конечно, нет. Но являюсь ли я серфером души — определённо, да!</p>
+        <cite class="who">Слава</cite>
+      </blockquote>
+      <blockquote class="b reveal">
+        <p>Не быть лучше всех, но быть лучше себя. Для себя.</p>
+        <cite class="who">Антон</cite>
+      </blockquote>
     </div>
   </section>
 
@@ -381,6 +428,10 @@
     <h2>Первый дроп получат свои</h2>
     <p>Вступайте в наш Telegram-канал. Там раньше всех появятся принты, дата старта предзаказа и закулисье: от эскиза до первой футболки из цеха.</p>
     <a class="btn" data-tg href="#" target="_blank" rel="noopener">Вступить в клуб →</a>
+    <blockquote class="club-quote">
+      <p>Если у тебя есть крылья, которым тесно в городе, они вновь обретут свободу.</p>
+      <cite class="who">Антон</cite>
+    </blockquote>
   </div>
 
   <section id="faq">
