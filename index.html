@@ -107,9 +107,9 @@
   .rail::-webkit-scrollbar { display: none; }
   .product { scroll-snap-align: start; }
   .product .tile { aspect-ratio: 4 / 5; display: grid; place-items: center; }
-  .product .tile svg { width: 58%; transition: transform .6s ease; }
-  .product:hover .tile svg { transform: translateY(-4px) rotate(-2deg); }
-  .product .flag { position: absolute; top: 12px; left: 12px; font-family: var(--cond); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; }
+  .product .tile img { display: block; }
+  .product:hover .tile img { transform: scale(1.03); }
+  .product .flag { position: absolute; top: 12px; left: 12px; font-family: var(--cond); font-weight: 700; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: #fff; text-shadow: 0 1px 8px rgba(0,0,0,.6); }
   .product .info { padding: 12px 2px 0; display: flex; justify-content: space-between; gap: 12px; font-family: var(--cond); font-size: 17px; font-weight: 600; }
   .product .info span { color: var(--ink-soft); font-weight: 500; }
   .product p { font-size: 14px; color: var(--ink-soft); padding: 2px 2px 0; }
@@ -314,7 +314,7 @@
       <article class="product reveal">
         <div class="tile" style="background:#fff0d2">
           <span class="flag">Скоро</span>
-          <svg viewBox="0 0 120 140" aria-hidden="true"><circle cx="78" cy="38" r="22" fill="#ffa100" opacity=".85"/><path d="M58 30a6 6 0 1 1-.1 0" fill="#181817"/><path d="M57 42l-6 22 10 2 4-20zM51 64l-4 74M61 66l3 72M47 96h20" stroke="#181817" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M60 46l30-30M90 16l2 40" stroke="#181817" stroke-width="2" fill="none"/><path d="M0 118c15-8 30-8 45 0s30 8 45 0 30-8 30-8v30H0z" fill="#3cbad2"/></svg>
+          <img src="img/tee-white.jpg?v=1" alt="Белая футболка Sandy Salt с доской и вопросительным знаком на фоне берега Шри-Ланки" loading="lazy" width="900" height="1125">
         </div>
         <div class="info">Stilt <span>Принт 01</span></div>
         <p>Рыбак на шесте. Терпение, с которым ждёшь свою волну.</p>
@@ -322,7 +322,7 @@
       <article class="product reveal">
         <div class="tile" style="background:#e6fbff">
           <span class="flag">Скоро</span>
-          <svg viewBox="0 0 120 140" aria-hidden="true"><circle cx="60" cy="44" r="26" fill="#ffa100" opacity=".85"/><path d="M28 98c6-18 22-26 32-26s26 8 32 26z" fill="#181817"/><path d="M76 74c0-14 2-28 6-36M82 38c-8-2-16 2-20 8M82 38c6-4 14-2 18 4M82 38c-2-6 2-12 8-14" stroke="#181817" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M0 104c15-8 30-8 45 0s30 8 45 0 30-8 30-8v44H0z" fill="#3cbad2"/></svg>
+          <img src="img/tee-black.jpg?v=1" alt="Чёрная футболка Sandy Salt с доской и вопросительным знаком на фоне берега Шри-Ланки" loading="lazy" width="900" height="1125">
         </div>
         <div class="info">Taprobane <span>Принт 02</span></div>
         <p>Крошечный остров в бухте. В отлив до него можно дойти по воде.</p>
@@ -330,7 +330,7 @@
       <article class="product reveal">
         <div class="tile" style="background:#ffe2b0">
           <span class="flag">Скоро</span>
-          <svg viewBox="0 0 120 140" aria-hidden="true"><path d="M30 50l52-18 6 6-52 18z" fill="#8a5ce0"/><path d="M26 62h56c8 0 14 8 14 18v18H26z" fill="#ffa100"/><path d="M26 62c0-8 6-12 12-12h40v12z" fill="#181817"/><rect x="62" y="70" width="22" height="14" rx="3" fill="#fff"/><circle cx="40" cy="100" r="9" fill="#181817"/><circle cx="86" cy="100" r="9" fill="#181817"/><path d="M0 124c15-6 30-6 45 0s30 6 45 0 30-6 30-6v22H0z" fill="#3cbad2"/></svg>
+          <img src="img/tee-white.jpg?v=1" alt="Белая футболка Sandy Salt с доской и вопросительным знаком на фоне берега Шри-Ланки" loading="lazy" width="900" height="1125">
         </div>
         <div class="info">Tuk-Tuk Quiver <span>Принт 03</span></div>
         <p>Доски на крыше, следующий спот за поворотом.</p>
@@ -341,7 +341,7 @@
         <p>Покажем участникам клуба раньше всех.</p>
       </a>
     </div>
-    <p class="wrap note">Сейчас на месте принтов эскизы-заглушки. Настоящие работы художника покажем в&nbsp;клубе первыми.</p>
+    <p class="wrap note">Сейчас на футболках принт-заглушка. Настоящие работы художника покажем в&nbsp;клубе первыми.</p>
   </section>
 
   <blockquote class="quote reveal">
