@@ -74,11 +74,11 @@
   .hero { padding: 6px; }
   .tile { position: relative; overflow: hidden; background: var(--tile); display: block; }
   .tile img { width: 100%; height: 100%; object-fit: cover; transition: transform 1.2s cubic-bezier(.2,.7,.2,1); }
-  .hero .tile { aspect-ratio: 2000 / 1326; max-height: calc(100vh - 90px); width: 100%; }
+  .hero .tile { aspect-ratio: 1280 / 591; max-height: calc(100vh - 90px); width: 100%; }
   .hero .tile::after { content: ""; position: absolute; inset: 55% 0 0; background: linear-gradient(transparent, rgba(0,0,0,.55)); pointer-events: none; }
   .hero .tile .hero-logo { position: absolute; left: 3.5%; top: 5%; width: 34%; height: auto; object-fit: contain; z-index: 1; }
   /* движение в духе промо-ролика: медленный наезд */
-  .kb { position: absolute; inset: 0; transform-origin: 58% 72%; animation: kb 18s ease-in-out infinite alternate; will-change: transform; }
+  .kb { position: absolute; inset: 0; transform-origin: 50% 40%; animation: kb 18s ease-in-out infinite alternate; will-change: transform; }
   .kb img { position: absolute; inset: 0; width: 100%; height: 100%; object-position: 50% 60%; }
   @keyframes kb { from { transform: scale(1); } to { transform: scale(1.14) translate(-1.5%, -2%); } }
   .tile-cap { z-index: 1; position: absolute; right: 24px; bottom: 22px; left: 24px; text-align: right; color: #fff; text-shadow: 0 1px 18px rgba(0,0,0,.35); }
@@ -208,7 +208,7 @@
   @media (max-width: 560px) {
     :root { --gutter: 16px; }
     .hero .tile { aspect-ratio: 4 / 5; max-height: none; }
-    .kb img { object-position: 58% 50%; }
+    .kb img { object-position: 50% 50%; }
     .hero .tile .hero-logo { left: 5%; top: 3.5%; width: 44%; }
     .rail { grid-auto-columns: 74%; }
     .steps { grid-template-columns: 1fr; }
@@ -253,9 +253,8 @@
   <div class="hero">
     <div class="tile">
       <div class="kb">
-        <img src="img/boat.jpg" width="2000" height="1326" alt="Рыбаки вытаскивают на берег лодку-оруву, Шри-Ланка">
+        <img src="img/hero-beach.jpg" width="1280" height="591" alt="Sandy Salt — серферы с досками на пляже в Шри-Ланке">
       </div>
-      <img class="hero-logo" src="img/logo.png" width="676" height="391" alt="Sandy Salt">
       <span class="coords ui up">5.97° N · 80.42° E — Weligama, Sri Lanka</span>
       <div class="tile-cap"><a class="big" href="#drop">Дроп 01. Weligama Bay</a><br><a class="ui arrow" href="#drop">Смотреть принты</a> <a class="ui arrow" href="#club" data-tg>Вступить в клуб</a></div>
     </div>
